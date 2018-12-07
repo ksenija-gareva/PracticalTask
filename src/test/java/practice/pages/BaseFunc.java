@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,8 +16,10 @@ public class BaseFunc {
     WebDriver driver;
 
     public BaseFunc() {
-        System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver", "/Users/ksenijagareva/Desktop/QA/geckodriver");
+        driver = new FirefoxDriver();
+//        System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
+//        driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
@@ -32,7 +35,7 @@ public class BaseFunc {
     }
 
     public WebElement getElement(By locator) {
-        Assertions.assertFalse(driver.findElement(locator).isDisplayed(), "There is no such element!");
+        Assertions.assertFalse(getElements(locator).isEmpty(), "There is no such element!");
         return driver.findElement(locator);
 
     }
@@ -42,13 +45,8 @@ public class BaseFunc {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void sendKey(By locator, String text) {
-        driver.findElement(locator).sendKeys(text);
-    }
-
-    public void selectFromDropdown(By locator, String text) {
-        Select dropdown = new Select(getElement(locator));
-        dropdown.selectByVisibleText(text);
+    public void navigateBack() {
+        driver.navigate().back();
     }
 
     public void closeDriver() {

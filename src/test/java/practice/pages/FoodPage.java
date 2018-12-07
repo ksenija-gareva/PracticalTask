@@ -9,20 +9,22 @@ public class FoodPage {
     BaseFunc baseFunc;
 
     private final By RECIPE = By.xpath(".//h1[contains(@class, 'headline-title')]");
+    // .//div[@class='list-item-wrapper'] РАЗДЕЛ ДЕСЕРТЫ
 
     public FoodPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
-    public RecipePage getOrangeCake(String name) {
-        List<WebElement> recipes = baseFunc.getElements(RECIPE);
-        for (WebElement cake : recipes) {
-            if (cake.findElement(RECIPE).getText().contains(name)) {
-                cake.click();
-                return new RecipePage(baseFunc);
-            }
-        }
-        return null;
-    }
+//    public RecipePage getDaysRecipe(int id) {
+//        List<WebElement> recipes = baseFunc.getElements(RECIPE);
+//        for (WebElement today : recipes) {
+//            if (today.findElements(RECIPE).get(id); {
+//                today.click();
+//                return new RecipePage(baseFunc);
+//            }
+//        }
+//
+//        return null;
+//    }
 }
 
 

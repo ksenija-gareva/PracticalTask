@@ -8,9 +8,9 @@ import java.util.List;
 public class HomePage {
     BaseFunc baseFunc;
 
-//    private final By COOKIES = By.xpath(".//a[@class='close cookie']");
-    private final By COOKIES = By.className("close cookie");
-    private final By FOOD = By.xpath(".//a[contains(@class, 'nav-link')]");
+    private final By COOKIES = By.xpath(".//a[@class='close cookie']");
+//    private final By COOKIES = By.className("close cookie");
+    private final By SECTION = By.xpath(".//a[contains(@class, 'nav-link')]");
 
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
@@ -22,10 +22,10 @@ public class HomePage {
         baseFunc.getElement(COOKIES).click();
     }
 
-    public FoodPage getFoodTab(String title) {
-        List<WebElement> tabs = baseFunc.getElements(FOOD);
+    public FoodPage getSectionByName(String name) {
+        List<WebElement> tabs = baseFunc.getElements(SECTION);
         for (WebElement tab : tabs) {
-            if (tab.findElement(FOOD).getText().contains(title)) {
+            if (tab.findElement(SECTION).getText().contains(name)) {
                 tab.click();
                 return new FoodPage(baseFunc);
             }
@@ -33,3 +33,5 @@ public class HomePage {
         return null;
     }
 }
+
+//ДЕЛАЙ ОЧЕНЬ ОБЩИМИ МЕТОДАМИ ВО ВСЕХ КЛАССАХ!!!! ВОЗЬМИ ПЕРВЫЙ РЕЦЕПТ ДНЯ
