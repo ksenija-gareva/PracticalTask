@@ -1,5 +1,6 @@
 package practice.pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class IngredientTest {
@@ -11,16 +12,16 @@ public class IngredientTest {
         baseFunc.goToPage(HOME_PAGE);
         HomePage homePage = new HomePage(baseFunc);
         homePage.acceptCookies();
-        homePage.getSectionByName("Еда");
+        homePage.getMenuByName("ЕДА");
 
         FoodPage foodPage = new FoodPage(baseFunc);
-        foodPage.getDaysRecipe(40);
+        foodPage.acceptCookies();
+        foodPage.getRecipe();
 
         RecipePage recipePage = new RecipePage(baseFunc);
-        recipePage.clickOnIngredient();
+        recipePage.getIngredient();
 
         IngredientPage ingredientPage = new IngredientPage(baseFunc);
-        ingredientPage.locateRecipe();
     }
 
 }

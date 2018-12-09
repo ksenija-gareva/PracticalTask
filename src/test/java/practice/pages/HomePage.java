@@ -9,8 +9,8 @@ public class HomePage {
     BaseFunc baseFunc;
 
     private final By COOKIES = By.xpath(".//a[@class='close cookie']");
-//    private final By COOKIES = By.className("close cookie");
-    private final By SECTION = By.xpath(".//a[contains(@class, 'nav-link')]");
+    private final By MENU = By.id("quick-site-section-navigation-inner");
+    private final By MENU_ITEM = By.xpath(".//span");
 
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
@@ -22,16 +22,14 @@ public class HomePage {
         baseFunc.getElement(COOKIES).click();
     }
 
-    public FoodPage getSectionByName(String name) {
-        List<WebElement> tabs = baseFunc.getElements(SECTION);
-        for (WebElement tab : tabs) {
-            if (tab.findElement(SECTION).getText().contains(name)) {
-                tab.click();
+    public FoodPage getMenuByName(String name) {
+        List<WebElement> menuItem = baseFunc.getElement(MENU).findElements(MENU_ITEM);
+        for (WebElement menu : menuItem) {
+            if (menu.getText().equals(name)) {
+                menu.click();
                 return new FoodPage(baseFunc);
             }
         }
         return null;
     }
 }
-
-//ДЕЛАЙ ОЧЕНЬ ОБЩИМИ МЕТОДАМИ ВО ВСЕХ КЛАССАХ!!!! ВОЗЬМИ ПЕРВЫЙ РЕЦЕПТ ДНЯ
