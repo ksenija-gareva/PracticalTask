@@ -17,11 +17,25 @@ public class IngredientTest {
         FoodPage foodPage = new FoodPage(baseFunc);
         foodPage.acceptCookies();
         foodPage.getRecipe();
+        foodPage.getName();
+        foodPage.getRecipeName();
 
         RecipePage recipePage = new RecipePage(baseFunc);
-        recipePage.getIngredient();
+        recipePage.getRecipeNameOnRecipePage();
+        Assertions.assertEquals(foodPage.getRecipeName(), recipePage.getRecipeNameOnRecipePage(), "Oops, wrong recipe!");
+        recipePage.getIngredientList();
+        recipePage.getFirstIngredient();
+        recipePage.getElementByNameOnList();
+//        recipePage.goThroughIngredientList();
 
         IngredientPage ingredientPage = new IngredientPage(baseFunc);
+        ingredientPage.getRecipeNameOnIngredientPage();
+//        ingredientPage.isRecipeNamePresent();
+//        Assertions.assertTrue(ingredientPage.isRecipeNamePresent());
+      //  ingredientPage.checkRecipeOnIngredientPage();
+//        ingredientPage.baseFunc.navigateBack();
+
+
     }
 
 }
