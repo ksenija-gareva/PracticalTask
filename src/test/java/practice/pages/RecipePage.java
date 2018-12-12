@@ -44,14 +44,14 @@ public class RecipePage {
         List<String> ingredientLinkList = new ArrayList<String>();
 
         for (int i = 0; i < ingredients.size(); i++) {
-            if (!Strings.isNullOrEmpty(ingredients.get(i).getAttribute("href"))) {
-                ingredientLinkList.add(ingredients.get(i).getAttribute("href"));
-                System.out.println("ССЫЛОНЬКИ НАШЕЛ!" + ingredientLinkList.add(ingredients.get(i).getAttribute("href")));
+//            if (!Strings.isNullOrEmpty(ingredients.get(i).getAttribute("href"))) {
+                    ingredientLinkList.add(ingredients.get(i).getAttribute("href"));
+                System.out.println("ССЫЛОНЬКИ НАШЕЛ!" + ingredientLinkList);
             }
             return ingredientLinkList;
         }
-        return null;
-    }
+//        return null;
+//    }
 
     //цикл для списка ингредиентов
     public IngredientPage getElementByNameOnList() {
