@@ -8,7 +8,7 @@ import java.util.List;
 public class HomePage {
     BaseFunc baseFunc;
 
-    private final By COOKIES = By.xpath(".//a[@class='close cookie']");
+    private final By COOKIES = By.id("cookiePolicyAccept");
     private final By MENU = By.id("quick-site-section-navigation-inner");
     private final By MENU_ITEM = By.xpath(".//span");
 
@@ -18,8 +18,9 @@ public class HomePage {
     }
 
     public void acceptCookies() {
-        baseFunc.waitForElement(COOKIES);
-        baseFunc.getElement(COOKIES).click();
+     if (baseFunc.waitForElement(COOKIES)) {
+         baseFunc.getElement(COOKIES).click();
+     }
     }
 
     public FoodPage getMenuByName(String name) {

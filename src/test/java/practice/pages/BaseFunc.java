@@ -5,20 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseFunc {
     WebDriver driver;
 
     public BaseFunc() {
-//        System.setProperty("webdriver.gecko.driver", "/Users/ksenijagareva/Desktop/QA/geckodriver");
-//        driver = new FirefoxDriver();
         System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -42,42 +36,20 @@ public class BaseFunc {
 
     }
 
-    public void waitForElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    public boolean waitForElement(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return true;
     }
 
     public String getFirstElementOnList(By locatorA, By locatorB) {
         List<WebElement> elements = driver.findElement(locatorA).findElements(locatorB);
-        for (int i = 0; i == 0; i++) {
             return elements.get(0).getText();
-        }
-        return null;
     }
-
-    public String getElementByNameOnList(By locatorA, By locatorB) {
-        List<WebElement> names = driver.findElement(locatorA).findElements(locatorB);
-        for (int i = 0; i < names.size(); i++) {
-            for (WebElement n : names) {
-                names.add(names.get(i)); {
-                    n.getText();
-                }
-                return n.getText();
-
-            }
-        }
-        return null;
-    }
-
 
     public String getElementByName(By locator) {
         WebElement name = driver.findElement(locator);
-        String elementName = name.getText();
-        return elementName;
-    }
-
-        public void navigateBack() {
-        driver.navigate().back();
+        return name.getText();
     }
 
     public void closeDriver() {
