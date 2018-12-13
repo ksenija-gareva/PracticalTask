@@ -32,8 +32,7 @@ public class IngredientTest {
         for (int i = 1; i < ingredientList.size(); i++) {
             baseFunc.goToPage((ingredientList.get(i)));
             Assertions.assertTrue(ingredientPage.getRecipeNameOnIngredientPage(openedRecipeName));
-
-        baseFunc.closeDriver();
         }
+        baseFunc.closeDriver();
     }
 }
